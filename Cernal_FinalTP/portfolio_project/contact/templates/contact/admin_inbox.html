@@ -1,0 +1,23 @@
+{% extends "portfolio/home.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Inbox</h1>
+
+<div style="max-width: 700px; margin: 20px auto;">
+    {% if messages %}
+        <div style="background: #f9f9f9; padding: 20px; border-radius: 10px;">
+            {% for message in messages %}
+                <div style="margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #ddd;">
+                    <strong>{{ message.user.username }}</strong> 
+                    <small style="color: #777;">on {{ message.timestamp|date:"Y-m-d H:i" }}</small>
+                    <p style="margin: 5px 0;">{{ message.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No messages yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
